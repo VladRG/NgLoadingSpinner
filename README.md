@@ -30,6 +30,25 @@ export class AppComponent extends HasLoadingSpinnerBase implements OnInit {
 }
 
 ```
+Or, alternatively, if you have a list of Observables and you want to show the loading spinner until all of them complete you can call the wrapObservableArrayWithSpinner function passing a function that returns an Observable array.
+```typescript
+  export class AppComponent extends HasLoadingSpinnerBase implements OnInit {
+  fetchData(): Array<Observable<any>> {
+    return [
+      Observable.of({ message: 'Hello' }).delay(3000),
+      Observable.of({ message: 'Hello' }).delay(4000),
+      Observable.of({ message: 'Hello' }).delay(5000)
+    ];
+  }
+
+  ngOnInit() {
+    // this function uses Observable.forkJoin in order to wait for all the Observables
+    this.wrapObservableArrayWithSpinner(this.fetchData.bind(this)).subscribe(data => {
+      console.log(data);
+    });
+  }
+}
+```
 It is important to always call the subscribe function even if you use the async pipe directly with the Observable.
 ```typescript
 export class AppComponent extends HasLoadingSpinnerBase implements OnInit {
