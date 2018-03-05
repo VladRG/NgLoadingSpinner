@@ -32,7 +32,7 @@ export class AppComponent extends HasLoadingSpinnerBase implements OnInit {
 ```
 Or, alternatively, if you have a list of Observables and you want to show the loading spinner until all of them complete you can call the wrapObservableArrayWithSpinner function passing a function that returns an Observable array.
 ```typescript
-  export class AppComponent extends HasLoadingSpinnerBase implements OnInit {
+export class AppComponent extends HasLoadingSpinnerBase implements OnInit {
   fetchData(): Array<Observable<any>> {
     return [
       Observable.of({ message: 'Hello' }).delay(3000),
