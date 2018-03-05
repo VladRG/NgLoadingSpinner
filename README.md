@@ -16,7 +16,7 @@ npm install --save vg-loading-spinner
   </vg-loading-spinner>
 ```
 4. Call the wrapObservableWithSpinner function from HasLoadingSpinnerBase passing a function that returns an Observable as a callback in the ngOnInit function.
-```
+```typescript
 export class AppComponent extends HasLoadingSpinnerBase implements OnInit {
   fetchData(): Observable<any> {
     return Observable.of({ message: 'Hello' }).delay(5000);
