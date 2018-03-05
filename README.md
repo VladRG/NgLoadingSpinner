@@ -34,16 +34,14 @@ It is important to always call the subscribe function even if you use the async 
 ```
 export class AppComponent extends HasLoadingSpinnerBase implements OnInit {
 
-  message: string;
+  message: Observable<string>;
   fetchData(): Observable<any> {
     this.message = Observable.of('Hello').delay(5000);
     return this.message;
   }
 
   ngOnInit() {
-    this.wrapObservableWithSpinner(this.fetchData.bind(this)).subscribe(data => {
-      console.log(data);
-    });
+    this.wrapObservableWithSpinner(this.fetchData.bind(this)).subscribe();
   }
 }
 
