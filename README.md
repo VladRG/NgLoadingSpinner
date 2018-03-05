@@ -1,7 +1,7 @@
 # Angular 2+ per component Loading Spinner
 
 ## Installation
-```
+```npm
 npm install --save vg-loading-spinner
 ```
 
@@ -10,7 +10,7 @@ npm install --save vg-loading-spinner
 1. Import the VgLoadingModule into your AppModule
 2. Extend the HasLoadingSpinnerBase
 3. Wrap your component with the <vg-loading-spinner></vg-loading-spinner> tags
-```
+```html
   <vg-loading-spinner [isLoading]='isLoading' message='Loading...'>
     // your content goes here
   </vg-loading-spinner>
@@ -31,7 +31,7 @@ export class AppComponent extends HasLoadingSpinnerBase implements OnInit {
 
 ```
 It is important to always call the subscribe function even if you use the async pipe directly with the Observable.
-```
+```typescript
 export class AppComponent extends HasLoadingSpinnerBase implements OnInit {
 
   message: Observable<string>;
